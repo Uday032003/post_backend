@@ -131,3 +131,10 @@ app.get("/comments/", async (request, response) => {
     response.send(dbCommentsData);
   }
 });
+
+app.delete("/comments", async (request, response) => {
+  const { commentid } = request.body;
+  const deleteCommentQuery = `DELETE FROM comments WHERE id = ${commentid}`;
+  await db.run(deleteCommentQuery);
+  response.send({ msg: "Comment deleted" });
+});
