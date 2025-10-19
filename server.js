@@ -51,7 +51,7 @@ let otp = null;
 const sendingOtp = async (mail) => {
   try {
     await transporter.sendMail({
-      from: '"Uday Team" kgpiitianganesha@gmail.com',
+      from: '"Ganesh Team" kgpiitianganesha@gmail.com',
       to: mail,
       subject: "Your OTP Code",
       text: `Your verification code is ${otp}`,
