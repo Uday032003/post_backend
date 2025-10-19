@@ -23,7 +23,7 @@ const server = app.listen(PORT, () => {
 const io = new Server(server, {
   cors: {
     origin: ["http://localhost:3000", "https://post-frontend-two.vercel.app/login"],
-    methods: ["GET", "PUT", "POST", "DELETE"],
+    methods: ["GET", "POST"],
   },
 });
 
@@ -53,7 +53,7 @@ let otp = null;
 const sendingOtp = async (mail) => {
   try {
     await transporter.sendMail({
-      from: '"Ganesh Team" kgpiitianganesha@gmail.com',
+      from: `"Ganesh Team" ${process.env.EMAIL_USER}`,
       to: mail,
       subject: "Your OTP Code",
       text: `Your verification code is ${otp}`,
