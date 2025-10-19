@@ -14,9 +14,11 @@ app.use(cors());
 
 const dbPath = path.join(__dirname, "database.db");
 
-const server = app.listen(3001, () => {
-  console.log("Server is running at http://localhost:3001");
+const PORT = process.env.PORT || 3001;
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
 
 const io = new Server(server, {
   cors: {
@@ -41,8 +43,8 @@ initializeDBAndServer();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "kgpiitianganesha@gmail.com",
-    pass: "zjyvkybqcjikkjei",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
